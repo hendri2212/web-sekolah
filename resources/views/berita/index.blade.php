@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berita SPENDA</title>
+
 </head>
 <body>
+    <div style="text-align:center">
     <h1>Berita Kegiatan SPENDA</h1>
 
     @foreach($berita as $b)
@@ -18,6 +20,11 @@
 
     <p>{{$b->isi}}</p>
     <hr>
+
+    <a href="{{route('berita.destroy',$b->id)}}"
+    method="POST" style="display:inline;">
     @endforeach
+</div>
+</form>
 </body>
 </html>
