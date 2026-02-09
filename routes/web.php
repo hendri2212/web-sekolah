@@ -11,8 +11,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home',[HomeController::class, 'index']);
-Route::get('/profil',[ProfilController::class, 'index']);
+// Route::get('/profil',[ProfilController::class, 'index']);
 Route::resource('berita',BeritaController::class);
+Route::resource('profil',ProfilController::class);
 
 //BERITA CONTROLLER 
 Route::get('/berita',[BeritaController::class, 'index']);

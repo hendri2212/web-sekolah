@@ -38,4 +38,47 @@ class BeritaController extends Controller
 
         return redirect('/berita');
     }
+
+        //edit
+        public function edit($id)
+        {
+            $berita = Berita::findOrFail($id);
+            return view('berita.edit', compact('berita'));
+        }
+
+        //update
+        public function update(Request $request, $id)
+        {
+            $berita = Berita::findOrFail($id);
+
+            if($request->hasFile('gambar')) {
+                $file = $request->file('gambar');
+                $nama_file = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('gambar'), $nama_file);
+                $berita->gambar = $nama_file;
+                
+            }
+
+            $berita->judul=$request->judul;
+            $berita->isi = $request->isi;
+            $berita->save();
+            return redirect('/berita');
+        }
+        
+        //destroy
+        public function destroy($id)
+        {
+            $berita = Berita::findOrFail($id);
+            $berita->delete();
+
+            return redirect('/berita');
+        }
+ 
+        //show
+        public function show($id)
+        {
+            $berita = Berita::findOrFail($id);
+            return view('berita.show', compact('berita'));
+        }
+    
 }
