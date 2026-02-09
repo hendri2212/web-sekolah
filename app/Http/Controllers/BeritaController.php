@@ -10,8 +10,8 @@ class BeritaController extends Controller
     public function index()
     {
         $berita = Berita::all();
-        // return view('berita.index', compact('berita'));
-        return json_decode($berita);
+         return view('berita.index', compact('berita'));
+        //return json_decode($berita);
     }
 
     public function create()
@@ -40,37 +40,28 @@ class BeritaController extends Controller
         return redirect('/berita');
     }
 
-<<<<<<< HEAD
-        //edit
-        public function edit($id)
-        {
-            $berita = Berita::findOrFail($id);
-            return view('berita.edit', compact('berita'));
-        }
-
-        //update
-        public function update(Request $request, $id)
-        {
-            $berita = Berita::findOrFail($id);
-
-            if($request->hasFile('gambar')) {
-                $file = $request->file('gambar');
-                $nama_file = time() . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('gambar'), $nama_file);
-                $berita->gambar = $nama_file;
-                
-            }
-
-            $berita->judul=$request->judul;
-            $berita->isi = $request->isi;
-            $berita->save();
-            return redirect('/berita');
-        }
+      
         
+        //confirmDelete
+        public function confirmDelete($id)
+        {
+            $berita = Berita::findOrFail($id);
+            return view('berita.delete', compact('berita'));
+        }
+
         //destroy
         public function destroy($id)
         {
             $berita = Berita::findOrFail($id);
+
+            // Hapus file gambar jika ada
+            if (!empty($berita->gambar)) {
+                $gambarPath = public_path('gambar/' . $berita->gambar);
+                if (file_exists($gambarPath)) {
+                    unlink($gambarPath);
+                }
+            }
+
             $berita->delete();
 
             return redirect('/berita');
@@ -83,7 +74,7 @@ class BeritaController extends Controller
             return view('berita.show', compact('berita'));
         }
     
-=======
+
     public function edit($id)
     {
         $berita = Berita::find($id);
@@ -113,5 +104,5 @@ class BeritaController extends Controller
 
         return redirect('/berita');
     }
->>>>>>> 227068d5d3a07bff1fc0c207290c6d28d49fc58c
+ 
 }
