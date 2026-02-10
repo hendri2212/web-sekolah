@@ -1,6 +1,7 @@
-<form action="/berita/{{ $berita->id}}"
-method="POST" enctype="multipart/from-data">
+<form action="/berita/{{ $berita->id }}"
+method="POST" enctype="multipart/form-data">
 @csrf
+@method('PUT')
 
 <input type="text" name="judul" value="{{ $berita->judul}}">
 <textarea name="isi">{{$berita->isi}}</textarea>
