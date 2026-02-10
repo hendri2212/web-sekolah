@@ -72,8 +72,6 @@
         @yield('content')
     </main>
 
-    <h1>RPL SMKN 1 KOTABARU</h1>
-
     <!-- FOOTER -->
     <div class="footer">
         <div class="container">
