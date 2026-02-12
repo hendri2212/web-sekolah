@@ -12,17 +12,18 @@
 
     @foreach($berita as $b)
     <h3>{{ $b->judul }}</h3>
+    <a href="{{ route('berita.show' , $b->id) }}">Baca Selengkapnya</a>
+    
 
     @if ($b->gambar)
     <img src="{{asset('gambar/'.$b->gambar) }}"
-    width="200">
+    width="250">
     @endif
 
     <p>{{$b->isi}}</p>
     <hr>
 
-    <a href="{{route('berita.destroy',$b->id)}}"
-    method="POST" style="display:inline;">
+    
     @endforeach
 </div>
 </form>

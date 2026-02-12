@@ -9,12 +9,12 @@
 
 <h2>{{$berita->judul}}</h2>
     
-@if($berita->foto)
-<img src="{{asset('storage/'.$berita->foto) }}" width="300">
+@if($berita->gambar)
+<img src="{{asset('gambar/'.$berita->gambar) }}" width="300">
 @endif
 
 <p>{{ $berita->isi}}</p>
 
-<a href="{{ route('berita.index') }}">Kembali</a>
+
 </body>
 </html>
