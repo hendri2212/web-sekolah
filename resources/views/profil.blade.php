@@ -194,7 +194,7 @@ Kabupaten Kotabaru, Kalimantan Selatan.
 </div>
 <hr>
 <p class="text-center mt-3 mb-0">
-© 2026 SMPN 2 Kotabaru - Website Resmi
+© 2026 SMPN 2 Kotabaru - Website 
 </p>
 </div>
 </div>
