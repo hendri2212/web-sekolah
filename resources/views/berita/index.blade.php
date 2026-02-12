@@ -12,7 +12,7 @@
 
     @foreach($berita as $b)
     <h3>{{ $b->judul }}</h3>
-    <a href="{{ route('berita.show' , $b->id) }}">Baca Selengkapnya</a>
+    <a href="{{ route('berita.show' , $b->id) }}">Lebih Lengkap</a>
     
 
     @if ($b->gambar)
