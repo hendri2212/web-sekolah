@@ -14,6 +14,7 @@
 
 <p>{{ $berita->isi}}</p>
 
+ <a href="/berita/{{$berita->id}}/delete" style="margin-left: 10px;">Hapus</a>
 
 </body>
 </html>
