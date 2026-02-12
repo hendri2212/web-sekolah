@@ -58,85 +58,22 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-dark shadow">
-    <div class="container d-flex justify-content-between">
-        <span class="navbar-brand fw-bold">📰 Berita SPENDA</span>
+    @foreach($berita as $b)
+    <h3>{{ $b->judul }}</h3>
+    <a href="{{ route('berita.show' , $b->id) }}">Lebih Lengkap</a>
+    
 
-        <input type="text" id="searchInput" class="form-control search-box"
-               placeholder="Cari berita...">
-    </div>
-</nav>
+    @if ($b->gambar)
+    <img src="{{asset('gambar/'.$b->gambar) }}"
+    width="250">
+    @endif
 
 <!-- CONTENT -->
 <div class="container mt-5">
     <div class="row" id="beritaContainer">
 
-        @foreach($berita as $b)
-        <div class="col-md-4 mb-4 berita-item">
-            <div class="card h-100 shadow-sm">
-
-                @if ($b->gambar)
-                <img src="{{ asset('gambar/'.$b->gambar) }}" class="card-img-top">
-                @endif
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ $b->judul }}</h5>
-                    <p class="card-text text-muted">
-                        {{ \Illuminate\Support\Str::limit($b->isi, 120) }}
-                    </p>
-                </div>
-
-                <div class="card-footer bg-white border-0 text-center">
-
-                    <!-- Detail Button -->
-                    <button class="btn btn-primary btn-sm btn-custom"
-                            data-bs-toggle="modal"
-                            data-bs-target="#modal{{ $b->id }}">
-                        Detail
-                    </button>
-
-                    <!-- Delete Button -->
-                    <form action="{{ route('berita.destroy', $b->id) }}"
-                          method="POST"
-                          style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                                class="btn btn-danger btn-sm btn-custom"
-                                onclick="return confirm('Yakin ingin menghapus berita ini?')">
-                            Hapus
-                        </button>
-                    </form>
-
-                </div>
-
-            </div>
-        </div>
-
-        <!-- MODAL DETAIL -->
-        <div class="modal fade" id="modal{{ $b->id }}" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">{{ $b->judul }}</h5>
-                        <button type="button" class="btn-close"
-                                data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        @if ($b->gambar)
-                        <img src="{{ asset('gambar/'.$b->gambar) }}"
-                             class="img-fluid mb-3">
-                        @endif
-                        <p>{{ $b->isi }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        @endforeach
-
-    </div>
+    
+    @endforeach
 </div>
 
 <!-- FOOTER -->

@@ -10,8 +10,8 @@ class BeritaController extends Controller
     public function index()
     {
         $berita = Berita::all();
-        // return view('berita.index', compact('berita'));
-        return json_decode($berita);
+         return view('berita.index', compact('berita'));
+        //return json_decode($berita);
     }
 
     public function create()
@@ -39,6 +39,41 @@ class BeritaController extends Controller
 
         return redirect('/berita');
     }
+
+      
+        
+        //confirmDelete
+        public function confirmDelete($id)
+        {
+            $berita = Berita::findOrFail($id);
+            return view('berita.delete', compact('berita'));
+        }
+
+        //destroy
+        public function destroy($id)
+        {
+            $berita = Berita::findOrFail($id);
+
+            // Hapus file gambar jika ada
+            if (!empty($berita->gambar)) {
+                $gambarPath = public_path('gambar/' . $berita->gambar);
+                if (file_exists($gambarPath)) {
+                    unlink($gambarPath);
+                }
+            }
+
+            $berita->delete();
+
+            return redirect('/berita');
+        }
+ 
+        //show
+        public function show($id)
+        {
+            $berita = Berita::findOrFail($id);
+            return view('berita.show', compact('berita'));
+        }
+    
 
     public function edit($id)
     {
@@ -69,4 +104,5 @@ class BeritaController extends Controller
 
         return redirect('/berita');
     }
+ 
 }
