@@ -1,82 +1,13 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMPN 2 Kotabaru</title>
+@extends('welcome')
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+@section('title', 'Profil - SMPN 2 Kotabaru')
+
+@push('styles')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css" rel="stylesheet">
+@endpush
 
-<style>
-body{
-    background:#f4f6f9;
-    font-family:'Segoe UI', sans-serif;
-}
-
-.navbar{
-    background:#0d6efd;
-}
-
-.section-title{
-    border-left:5px solid #0056d6;
-    padding-left:10px;
-    font-weight:600;
-}
-
-.card-hover{
-    transition:0.3s;
-}
-.card-hover:hover{
-    transform:translateY(-5px);
-    box-shadow:0 8px 20px rgba(0,0,0,0.1);
-}
-
-.program-box{
-    border-radius:10px;
-    padding:20px;
-    color:white;
-    text-align:center;
-    font-weight:600;
-    transition:0.3s;
-}
-.program-box:hover{
-    opacity:0.9;
-    transform:scale(1.05);
-}
-
-.footer{
-    background:#0f172a;
-    color:white;
-    padding:40px 0;
-    margin-top:40px;
-}
-</style>
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-<div class="container">
-<a class="navbar-brand fw-bold" href="#">SMPN 2 Kotabaru</a>
-
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="menu">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Profil</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Berita</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
-</ul>
-</div>
-</div>
-</nav>
-
+@section('content')
 <!-- HERO -->
 <div class="container my-4 text-center">
 <h3 class="fw-bold">SMPN 2 Kotabaru</h3>
@@ -174,35 +105,11 @@ Kabupaten Kotabaru, Kalimantan Selatan.
 
 </div>
 </div>
+@endsection
 
-<!-- FOOTER -->
-<div class="footer">
-<div class="container">
-<div class="row">
-<div class="col-md-6">
-<h6>SMPN 2 Kotabaru</h6>
-<p>Pulau Laut Utara, Kabupaten Kotabaru</p>
-<p>Kalimantan Selatan</p>
-<p>Email: smpn2kotabaru@gmail.com</p>
-</div>
-<div class="col-md-6 text-md-end">
-<p>Ikuti Kami</p>
-<i class="fab fa-facebook fa-lg me-2"></i>
-<i class="fab fa-instagram fa-lg me-2"></i>
-<i class="fab fa-youtube fa-lg"></i>
-</div>
-</div>
-<hr>
-<p class="text-center mt-3 mb-0">
-© 2026 SMPN 2 Kotabaru - Website 
-</p>
-</div>
-</div>
-
+@push('scripts')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
-
 <script>
 $(document).ready(function(){
 $(".owl-carousel").owlCarousel({
@@ -216,6 +123,4 @@ responsive:{
 });
 });
 </script>
-
-</body>
-</html>
+@endpush
